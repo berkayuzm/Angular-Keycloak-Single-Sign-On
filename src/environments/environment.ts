@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  keycloak:{
+    issuer:"http://192.168.1.20:8080/auth/realms/MyRealm",
+    redirectUri:"http://localhost:4200",
+    clientId:"sso-app",
+    scope:"openid profile email offline_access"
+  }
 };
 
 /*
