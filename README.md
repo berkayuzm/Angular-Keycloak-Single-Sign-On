@@ -1,27 +1,9 @@
-# SsoApp2
+# Angular ve Active Directory & Keycloak & Single Sing On
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.2.
+Bu projemde Active Directory server için sanal makina üzerinde Windows Server kurdum ve çalıştırdım. Linux üzerine ise KeyCloak çalıştırıp servise açtım.
+Virtual Box üzerinde Yalnızca Anamakina ağ bağdaştırıcısını seçerek hem sanal makinelerimin birbiriyle iletişimini sağladım hem de sanal makinelerim fiziksel makinemle iletişime geçebiliyordu. Tabiki bunun için her bir makineyi aynı ağa bağlamam gerekiyordu bunun için ise manuel olarak her bir makineye ip adresi dağıttım. örnek olarak
+Windows Server=192.168.1.1,Linux =192.168.1.2, Fiziksel PC = 192.168.1.3 vs.
 
-## Development server
+Hepsini aynı ağa bağladıktan sonra Linux üzerinden çalışan Keycloak uygulaması Windows Server üzerinde çalışan Active Directory hizmetine bağlanarak veritabanında bulunan kullanıcıları kendi bünyesine aldı.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Fiziksel bilgisayarım üzerinde çalışan bu Web Uygulaması ise login yapmaya çalıştığımızda  8080 portunda hizmet veren Keycloak servisine bağlanıp (192.168.1.2:8080) girilen bilgilerle bir istekte bulunuyor eğer girilen kullanıcı adı ve şifresi doğru ise Keycloak, Angular uygulamasına bir JWT token gönderip Authentication sağlamış oluyor.  
